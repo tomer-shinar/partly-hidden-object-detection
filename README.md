@@ -11,6 +11,14 @@ We splitted each of the above datasets (small black patches, big black patches, 
 To compare the results, we used the original dataset without any modification to compare to.  
 In the following images we can see all five kinds of images: origin, background patches, small black patches, big black patches and average patches. The comparison isn’t perfect because the black patches are in big and small sizes while the average and background patches are medium sized. We couldn’t test all options since there would be too many datasets and models. Future work could test the effect of all of those parameters on datasets, models and more.
 
+<p align="center">
+<img src="readme_files/origin1.png" alt="drawing" width="200"/> <img src="readme_files/sbp.png" alt="drawing" width="200"/> <img src="readme_files/avg.png" alt="drawing" width="200"/>  
+</p>
+
+<p align="center">
+<img src="readme_files/bkg.png" alt="drawing" width="200"/> <img src="readme_files/bbp.png" alt="drawing" width="200"/>
+</p>
+
 We evaluated our 9 (2x4+1) models via mAP (mAP=111 RecalliPrecision(Recalli)).  
 Each model will be evaluated on all 9 datasets and our goal is to see whether training the model on ‘harder’ datasets will help him perform better on the ‘easier’ one (origin).
 
@@ -22,6 +30,11 @@ The article Hide-and-Seek: A Data Augmentation Technique for Weakly-Supervised L
 We used a Faster RCNN model, with resnet50 as it’s backbone.  
 Faster RCNN is an object detection architecture presented by Ross Girshick, Shaoqing Ren, Kaiming He and Jian Sun. It is composed of 3 main parts - 3 neural networks, each responsible for different tasks. The first component is the Feature Network which is responsible to generate features from the given images to the next components. The second component is Region Proposal Network (RPN) which is responsible for returning areas in which it believes there are objects. The third component is the Detection Network which is responsible for generating the final results using the two previous components output. It generates bounding boxes and classifies the objects in them.  
 We trained 9 Faster RCNN models, one for each of the datasets that we described above.
+
+### Loss function
+<img src="readme_files/loss1.png" alt="drawing"/>
+
+<img src="readme_files/loss2.png" alt="drawing"/>
 
 ### Creating The Patches
 As we described above, we created 8 new datasets with patches. The number of patches was taken from the following uniform distributions: small-black - [50,75], big-black - [15,25], background and average - [20,30]. The sizes (width and height) of the patches were taken from the following normal distributions (in the form of (mean, std), woi = width of image, hoi = height of image): small-black - width (woi32,woi32), height (hoi32,hoi32), big-black - width (woi10,woi10), height (hoi10,hoi10), background and average - width (woi16,woi16), height (hoi16,hoi16). The positions of the patches were uniformly distributed among all possible positions in the image.  
@@ -69,9 +82,19 @@ We should add, all models performed very good on the origin dataset, which may i
 ### Prediction Examples
 Those are examples of the inferring of the models, each on its own testset. You can see the full testsets and inferring in github under ‘preds’ directory.
 
-Here, we see the edges cut out in model type 2 (average patches).
+<p align="center">
+<img src="readme_files/1.png" alt="drawing" width="200"/> <img src="readme_files/2.png" alt="drawing" width="200"/> <img src="readme_files/3.png" alt="drawing" width="200"/> 
+</p>
+
+<p align="center">
+<img src="readme_files/4.png" alt="drawing" width="200"/> <img src="readme_files/5.png" alt="drawing" width="200"/> 
+</p>
+
+Here (bottom right image), we see the edges cut out in model type 2 (average patches).
+
+<p align="center">
+<img src="readme_files/6.png" alt="drawing" width="200"/> <img src="readme_files/7.png" alt="drawing" width="200"/>
+</p>
 
 Lastly, we can look at those two images. We can see that in the right photo which was inferred by the background model identified the reflection of a man (which wasn’t in the ground truth! A proof to that is that it placed him as background on the right side of the picture.  
 In the left photo we can see that even the origin didn’t recognize him. It’s an indication that the patches might improve the model.
-
-
