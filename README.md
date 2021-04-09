@@ -86,15 +86,19 @@ Those are examples of the inferring of the models, each on its own testset. You 
 <img src="readme_files/1.png" alt="drawing" width="200"/> <img src="readme_files/2.png" alt="drawing" width="200"/> <img src="readme_files/3.png" alt="drawing" width="200"/> 
 </p>
 
+Here (bottom right image), we see the edges cut out in model type 2 (average patches).
+
 <p align="center">
 <img src="readme_files/4.png" alt="drawing" width="200"/> <img src="readme_files/5.png" alt="drawing" width="200"/> 
 </p>
 
-Here (bottom right image), we see the edges cut out in model type 2 (average patches).
+
+
+Lastly, we can look at those two images. We can see that in the right photo which was inferred by the background model identified the reflection of a man (which wasn’t in the ground truth! A proof to that is that it placed him as background on the right side of the picture.  
+In the left photo we can see that even the origin didn’t recognize him. It’s an indication that the patches might improve the model.
 
 <p align="center">
 <img src="readme_files/6.png" alt="drawing" width="200"/> <img src="readme_files/7.png" alt="drawing" width="200"/>
 </p>
 
-Lastly, we can look at those two images. We can see that in the right photo which was inferred by the background model identified the reflection of a man (which wasn’t in the ground truth! A proof to that is that it placed him as background on the right side of the picture.  
-In the left photo we can see that even the origin didn’t recognize him. It’s an indication that the patches might improve the model.
+
