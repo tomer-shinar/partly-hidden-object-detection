@@ -19,7 +19,7 @@ In the following images we can see all five kinds of images: origin, background 
 <img src="readme_files/bkg.png" alt="drawing" width="200"/> <img src="readme_files/bbp.png" alt="drawing" width="200"/>
 </p>
 
-We evaluated our 9 (2x4+1) models via mAP (mAP=111 RecalliPrecision(Recalli)).  
+We evaluated our 9 (2x4+1) models via mAP (![equation](https://bit.ly/39WtARE)).  
 Each model will be evaluated on all 9 datasets and our goal is to see whether training the model on ‘harder’ datasets will help him perform better on the ‘easier’ one (origin).
 
 ## Related Work
@@ -37,7 +37,7 @@ We trained 9 Faster RCNN models, one for each of the datasets that we described 
 <img src="readme_files/loss2.png" alt="drawing"/>
 
 ### Creating The Patches
-As we described above, we created 8 new datasets with patches. The number of patches was taken from the following uniform distributions: small-black - [50,75], big-black - [15,25], background and average - [20,30]. The sizes (width and height) of the patches were taken from the following normal distributions (in the form of (mean, std), woi = width of image, hoi = height of image): small-black - width (woi32,woi32), height (hoi32,hoi32), big-black - width (woi10,woi10), height (hoi10,hoi10), background and average - width (woi16,woi16), height (hoi16,hoi16). The positions of the patches were uniformly distributed among all possible positions in the image.  
+As we described above, we created 8 new datasets with patches. The number of patches was taken from the following uniform distributions: small-black - `[50,75]`, big-black - `[15,25]`, background and average - `[20,30]`. The sizes (width and height) of the patches were taken from the following normal distributions (in the form of `(mean, std)`, `woi = width of image`, `hoi = height of image`): small-black - width `(woi/32,woi/32)`, height `(hoi/32,hoi/32)`, big-black - width `(woi/10,woi/10)`, height `(hoi/10,hoi/10)`, background and average - width `(woi/16,woi/16)`, height `(hoi/16,hoi/16)`. The positions of the patches were uniformly distributed among all possible positions in the image.  
 The background patches were selected from uniform positions across the original image, and verified with the mask of the image that they do not intersect with any objects, and then added to the image as explained above. If the verification failed, we tried again (limited by 25 tries).
 To get the average color we summed all pixels of the dataset and divided by the number of them.  
 The masks are matrices that define for each pixel the object it is a part of (0 = background, 1 = the first object, etc.). The ground truth bounding boxes are calculated via the mask to be the smallest box that contains every pixel of the object (different bounding box for each different object). While adding patches we created a new mask for each image where pixels that are hidden by a patch got the value 0, meaning part of the background and not the object itself.  
