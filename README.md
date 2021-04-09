@@ -1,5 +1,7 @@
 # Partly Hidden Object Detection
 
+[link to colab notebook](https://colab.research.google.com/drive/19PB4ONBDxTLfYGt6jro073VtBi9s5rxu?usp=sharing)
+
 ## The Problem
 Object detection is detecting instances of semantic objects of a certain class (such as humans, buildings, or cars) in digital images and videos, and putting bounding boxes around them. 
 
@@ -23,7 +25,8 @@ We evaluated our 9 (2x4+1) models via mAP (![equation](https://bit.ly/39WtARE)).
 Each model will be evaluated on all 9 datasets and our goal is to see whether training the model on ‘harder’ datasets will help him perform better on the ‘easier’ one (origin).
 
 ## Related Work
-The article Hide-and-Seek: A Data Augmentation Technique for Weakly-Supervised Localization and Beyond by Krishna Kumar Singh, Hao Yu, Aron Sarmasi, Gautam Pradeep and Yong Jae Lee presents a way to do augmentations by adding black patches to the picture, and classify the image into classes (one class per image). They handled multiple tasks among classification and bound the object. They used one-sized patches and had a single object per image. They used the same image multiple times during training with different patch locations in order to train the model to classify based on different parts of the object (the visible ones which were different in each augmented image). They replaced the black color with a solid color which was the mean of all pixels. They did it so that the mean of the testset will be close to the training set one and the model would generalize better. The idea to make average patches came from this article, we wanted to compare it to black and background patches.
+The article [Hide-and-Seek: A Data Augmentation Technique for Weakly-Supervised Localization and Beyond](https://arxiv.org/pdf/1811.02545.pdf
+) by Krishna Kumar Singh, Hao Yu, Aron Sarmasi, Gautam Pradeep and Yong Jae Lee presents a way to do augmentations by adding black patches to the picture, and classify the image into classes (one class per image). They handled multiple tasks among classification and bound the object. They used one-sized patches and had a single object per image. They used the same image multiple times during training with different patch locations in order to train the model to classify based on different parts of the object (the visible ones which were different in each augmented image). They replaced the black color with a solid color which was the mean of all pixels. They did it so that the mean of the testset will be close to the training set one and the model would generalize better. The idea to make average patches came from this article, we wanted to compare it to black and background patches.
 
 ## The Method
 ### The Model Architecture
