@@ -1,6 +1,6 @@
 # Partly Hidden Object Detection
 
-[link to colab notebook](https://colab.research.google.com/drive/19PB4ONBDxTLfYGt6jro073VtBi9s5rxu?usp=sharing)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/19PB4ONBDxTLfYGt6jro073VtBi9s5rxu?usp=sharing)
 
 ## The Problem
 Object detection is detecting instances of semantic objects of a certain class (such as humans, buildings, or cars) in digital images and videos, and putting bounding boxes around them. 
